@@ -42,16 +42,44 @@ const StateDemo = () => {
 
     //console.log({ name, lastName });
 
+    //Conditional rendering
+    const [showStudent, setShowStudent] = useState(true);
+
     return (
         <main>
             <h1 className="text-center mt-5 mb-5 font-bold text-4xl underline">
                 Welcome to state demo!
             </h1>
-            <ul className="flex flex-col items-center justify-around">
+
+            {/* Conditional rendering - verzija sa ternarnim operatorom */}
+            {/* {showStudent ? (
+                < ul className="flex flex-col items-center justify-around">
+            {students.map((el) => (
+                <Student key={el.id} {...el} />
+            ))}
+            </ul>) : <p className="text-center">No students</p>
+            } */}
+
+            {/* Conditional rendering - 2.nacin */}
+            {/* {showStudent && (
+                < ul className="flex flex-col items-center justify-around">
+            {students.map((el) => (
+                <Student key={el.id} {...el} />
+            ))}
+            </ul>)
+            } */}
+
+            {/* template string/literals */}
+            <ul
+                className={` ${
+                    showStudent ? '' : 'opacity-0'
+                } flex flex-col items-center justify-around`}
+            >
                 {students.map((el) => (
                     <Student key={el.id} {...el} />
                 ))}
             </ul>
+
             <section className="flex flex-col w-64 justify-center items-center my-0 mx-auto border-gray-500">
                 <input
                     className="border-b-2 outline-none mt-5 border-solid border-gray-500"
@@ -82,6 +110,13 @@ const StateDemo = () => {
                     className="mt-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                 >
                     Submit
+                </button>
+
+                <button
+                    onClick={() => setShowStudent(!showStudent)}
+                    className="mt-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                >
+                    Toggle students
                 </button>
             </section>
         </main>
