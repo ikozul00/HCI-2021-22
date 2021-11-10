@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-
+//apsolute path definiran u jsconfig.json
 import LogoImg from '@/assets/logo.png';
 import HeroImg from '@/assets/hero.png';
 import NavBar from '@/components/navbar';
